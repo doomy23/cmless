@@ -1,0 +1,13 @@
+{% extends "cmless/error_base.html" %}
+
+{% block title %}403 Forbidden{% endblock %}
+
+{% block header %}
+<i class="glyphicon glyphicon-ban-circle"> </i>
+<h1>403 Forbidden</h1>
+<h2>{{absolute_request_uri}}</h2>
+{% endblock %}
+
+{% block content %}
+<div class="col-md-12">You do not have the rights to access this page.</div>
+{% endblock %}

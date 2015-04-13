@@ -1,0 +1,17 @@
+{% extends "templates/base.html" %}
+
+{% block title %}500 Internal Server Error | {% endblock %}
+{% block pageID %}error{% endblock %}
+
+{% block content %}
+<div class="row">
+	<section id="error" class="col-md-9 col-sm-9 col-xs-12">
+		<h2>500 Internal Server Error</h2>
+		<h3>{{absolute_request_uri}}</h3>
+		<h4>{{level}} - {{message}}</h4>
+		<p>The page you requested returned an error during the process, please contact an administrator.</p>
+	</section>
+	
+	{% last_news_section %}	
+</div>
+{% endblock %}

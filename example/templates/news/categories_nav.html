@@ -1,0 +1,10 @@
+<section id="newsArticlesCategories" class="col-md-3 col-sm-3 col-xs-12">
+	<h2>Categories</h2>
+	<nav>
+		<ul>
+			{% for category in categories %}
+			<li{% if category == current_category %} class="active"{% endif %}><a href="{{ BASE_URL }}news/{{ category.slug }}/">{{ category.name }}</a></li>
+			{% endfor %}
+		</ul>
+	</nav>
+</section>

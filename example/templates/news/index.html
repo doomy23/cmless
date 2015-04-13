@@ -1,0 +1,39 @@
+{% extends "templates/base.html" %}
+
+{% block title %}{% if not current_category is null %}{{ current_category.name }}{% else %}News articles{% endif %} | {% endblock %}
+{% block pageID %}news{% endblock %}
+
+{% block breadcrumb %}
+<li><span class="fa fa-angle-right"></span> <a href="{{ BASE_URL }}news/">News</a></li>
+{% if not current_category is null %}<li><span class="fa fa-angle-right"></span> <a href="{{ BASE_URL }}news/{{ current_category.slug }}">{{ current_category.name }}</a></li>{% endif %}
+{% if current_page > 1  %}<li><span class="fa fa-angle-right"></span> <a href="{{ BASE_URL }}news/{% if not current_category is null %}{{ current_category.slug }}/{% endif %}page-{{ current_page }}/">Page {{ current_page }}</a></li>{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+	<section id="newsArticles" class="col-md-9 col-sm-9 col-xs-12">
+		<h1>{% if not current_category is null %}{{ current_category.name }}{% else %}News articles{% endif %}</h1>
+		
+		{% for newsarticle in articles %}
+		<article class="newsArticle clearfix">
+			<img src="{{ MEDIA_URL }}{{ newsarticle.image }}"/>
+			<h2>{{ newsarticle.title|ucwords }}</h2>
+			<p>{{ newsarticle.short_desc }}</p>
+			<a class="btn btn-primary" href="{{ newsarticle.getUrl }}"><span class="fa fa-arrow-right"></span> See full article</a>
+		</article>
+		{% endfor %}
+		
+		<nav>
+  			<ul class="pagination">
+	    		<li{% if previous_page is null %} class="disabled"{% endif %}><a href="{% if previous_page is null %}#{% else %}{{ BASE_URL }}news/{% if not current_category is null %}{{ current_category.slug }}/{% endif %}page-{{ previous_page }}/{% endif %}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+	    		{% for page in pages %}
+	    		<li{% if page.num == current_page  %} class="active"{% endif %}><a href="{{ BASE_URL }}news/{% if not current_category is null %}{{ current_category.slug }}/{% endif %}page-{{ page.num }}/">{{ page.num }}</a></li>
+	    		{% endfor %}
+	    		<li{% if next_page is null %} class="disabled"{% endif %}><a href="{% if next_page is null %}#{% else %}{{ BASE_URL }}news/{% if not current_category is null %}{{ current_category.slug }}/{% endif %}page-{{ next_page }}/{% endif %}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+ 			</ul>
+		</nav>
+	</section>
+	
+	{% news_categories_menu current_category %}
+</div>
+{% endblock %}

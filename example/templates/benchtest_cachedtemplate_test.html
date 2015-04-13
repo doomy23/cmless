@@ -1,0 +1,9 @@
+{% extends "templates/base.html" %}
+{% block content %}
+{% for article in news %}== {{ article.title }}
+Description : {{ article.short_desc }}
+Category : {{ article.getCategory.name }}
+Author : {{ article.getAuthor.name }}
+Datetime : {{ article.datetime }}
+{% endfor %}
+{% endblock %}

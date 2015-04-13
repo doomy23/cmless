@@ -1,0 +1,16 @@
+{% extends "templates/base.html" %}
+
+{% block title %}404 Page not found | {% endblock %}
+{% block pageID %}error{% endblock %}
+
+{% block content %}
+<div class="row">
+	<section id="error" class="col-md-9 col-sm-9 col-xs-12">
+		<h2>404 Page not found</h2>
+		<h3>{{absolute_request_uri}}</h3>
+		<p>The page you requested was not found, or you do not have permission to view this page.</p>
+	</section>
+	
+	{% last_news_section %}
+</div>
+{% endblock %}

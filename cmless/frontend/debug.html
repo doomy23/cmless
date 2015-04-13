@@ -1,0 +1,63 @@
+{% extends "cmless/error_base.html" %}
+
+{% block title %}{{level}}{% endblock %}
+
+{% block header %}
+<i class="glyphicon glyphicon-exclamation-sign"> </i>
+<h1>{{message}}</h1>
+<h2>{{level}}</h2>
+<h3>{{file}} line {{line}}</h3>
+{% endblock %}
+
+{% block content %}
+{% if traceback|length > 0 %}
+<div id="traceback" class="col-md-12{% if context|length == 0 %} mb0{% endif %}">
+	<h4>Traceback</h4>
+	<ul>
+	{% for trace in traceback %}
+		<li class="trace">
+			{% if trace.file %}<div class="file">{{trace.file}} <span class="line">- line {{trace.line}}</span></div>{% endif %}
+			<div class="call">
+			{% if trace.class %}<span class="class">{{trace.class}}</span> <span class="type">{{trace.type}}</span> {% endif %}<span class="function">{{trace.function}}</span>(<span class="params">{% if trace.args|length > 0 %}
+				{% for arg in trace.args %}
+				{% if arg is array %}Array( {{arg|length}} ){% else %}{{arg|htmlentities}}{% endif %}{% if not forloop.last %},{% endif %}
+				{% endfor %}
+			{% endif %}</span>)
+			</div>
+		</li>
+	{% endfor %}
+	</ul>
+	{% if context|length > 0 %}<hr/>{% endif %}
+</div>
+{% endif %}
+{% if context|length > 0 %}
+<div id="context" class="col-md-12">
+	<h4>Context</h4>
+	<table class="table table-bordered table-condensed">
+	{% for key, value in context %}
+		<tr>
+			<th colspan="2">{{key}}</th>
+		</tr>
+		{% if value is array %}
+			{% for key, val in value %}
+			<tr>
+				<td class="key">{{key}}</td>
+				<td>
+					{% if val is array %}
+					{{val}}
+					{% else %}
+					{{val|htmlentities|nl2br}}
+					{% endif %}
+				</td>
+			</tr>
+			{% endfor %}
+		{% else %}
+		<tr>
+			<td colspan="2">{{value|htmlentities|nl2br}}</td>
+		</tr>
+		{% endif %}
+	{% endfor %}
+	</table>
+</div>
+{% endif %}
+{% endblock %}

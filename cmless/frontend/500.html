@@ -1,0 +1,14 @@
+{% extends "cmless/error_base.html" %}
+
+{% block title %}500 Internal Server Error{% endblock %}
+
+{% block header %}
+<i class="glyphicon glyphicon-exclamation-sign"> </i>
+<h1>500 Internal Server Error</h1>
+<h2>{{level}} - {{message}}</h2>
+<h3>{{absolute_request_uri}}</h3>
+{% endblock %}
+
+{% block content %}
+<div class="col-md-12">The page you requested returned an error during the process, please contact an administrator.</div>
+{% endblock %}

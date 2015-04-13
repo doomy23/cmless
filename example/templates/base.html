@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<title>{% block title %}{% endblock %}Example site</title>
+		{% block meta %}{% endblock %}
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+		<link href="{{ STATIC_URL }}css/styles.css" rel="stylesheet"/>
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body id="page-{% block pageID %}default{% endblock %}">
+		<header>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3 col-sm-12">
+						<h1>Example</h1>
+					</div>
+					<div class="col-md-9 col-sm-12">
+						<nav id="navbar-header" class="navbar navbar-default" role="navigation">
+							<div class="container-fluid">
+								<div class="collapse navbar-collapse hidden-xs">
+									<ul class="nav navbar-nav">
+										<li>
+											<a href="{{ BASE_URL }}">
+												<span class="glyphicon glyphicon-home"></span>
+												Home
+											</a>
+										</li>
+										<li class="dropdown">
+											<a href="{{ BASE_URL }}news/">
+												News Articles <span class="caret"></span>
+											</a>
+											<ul class="dropdown-menu" aria-labelledby="newsarticlesDrop" role="menu">
+											{% news_categories_list "news_cats" %}
+												{% for news_cat in news_cats %}
+												<li role="presentation">
+													<a href="{{ BASE_URL }}news/{{ news_cat.slug }}/" tabindex="-1" role="menuitem">{{ news_cat.name }}</a>
+												</li>
+												{% endfor %}
+											{% end_news_categories_list %}
+											</ul>
+										</li>
+										<li>
+											<a href="{{ BASE_URL }}benchtest/">
+												<span class="fa fa-gear"></span>
+												Bench Test
+											</a>
+										</li>
+										<li>
+											<a href="{{ BASE_URL }}">
+												<span class="glyphicon glyphicon-tower"></span>
+												Dolor si amet
+											</a>
+										</li>
+									</ul>
+									<ul class="nav navbar-nav pull-right">
+										<li>
+											<a href="{{ BASE_URL }}">
+												<span class="glyphicon glyphicon-globe"></span>
+												Contact Us
+											</a>
+										</li>
+									</ul>
+								</div>
+								<select id="smallDevicesSelectMenu" class="visible-xs">
+									<option value="">&raquo; Menu</option>
+									<option value="{{ BASE_URL }}">Home page</option>
+									<option value="{{ BASE_URL }}news/">News article</option>
+									{% news_categories_list "news_cats" %}{% for news_cat in news_cats %}
+									<option value="{{ BASE_URL }}news/{{ news_cat.slug }}/">-- {{ news_cat.name }}</option>{% endfor %}{% end_news_categories_list %}
+									<option value="{{ BASE_URL }}benchtest/">Bench Test</option>
+									<option value="{{ BASE_URL }}">Dolor si amet</option>
+									<option value="{{ BASE_URL }}">Contact us</option>
+								</select>
+							</div>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</header>
+		<div id="content" class="container">
+			<nav>
+				<ul id="breadcrumb" class="row clearfix">
+					<li><span class="fa fa-angle-double-right"></span> <a href="{{ BASE_URL }}">Home</a></li>
+					{% block breadcrumb %}{% endblock %}
+				</ul>
+			</nav>
+			
+			{% block content %}
+			<div class="row">
+				<section class="col-md-12">
+					<h1>Empty page</h1>
+					<p>Sorry but this age is unavailable for the moment!</p>
+				</section>
+			</div>
+			{% endblock %}
+			
+			<footer class="container">
+				<div class="row">
+					<nav id="footerNav" class="col-md-8 col-sm-8 col-xs-12">
+						<ul class="clearfix">
+							<li><span class="fa fa-angle-double-right"></span> <a href="{{ BASE_URL }}">Home page</a></li>
+							<li><span class="fa fa-angle-double-right"></span> <a href="{{ BASE_URL }}news/">News articles</a></li>
+							<li><span class="fa fa-angle-double-right"></span> <a href="{{ BASE_URL }}benchtest/">Bench Test</a></li>
+							<li><span class="fa fa-angle-double-right"></span> <a href="{{ BASE_URL }}">Dolor si amet</a></li>
+							<li><span class="fa fa-angle-double-right"></span> <a href="{{ BASE_URL }}">Contact us</a></li>
+						</ul>
+					</nav>
+					
+					<section id="footerCoord" class="col-md-4 col-sm-4 col-xs-12">
+						<h1>Example</h1>
+						<p>
+							<span class="fa fa-map-marker"></span> 123 Example St. Arkham, Massachusetts<br/>
+							<span class="fa fa-at"></span> <a href="mailto:contact@exemple.cmless">contact@example.cmless</a><br/>
+							<span class="fa fa-phone"></span> <a href="tel:1-888-123-1234">1-888-123-1234</a>
+						</p>
+					</section>
+				</div>
+			</footer>
+		</div>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="{{ STATIC_URL }}js/smallDevicesSelectMenu.js"></script>
+		{% block scripts %}{% endblock %}
+	</body>
+</html>

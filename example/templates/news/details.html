@@ -1,0 +1,47 @@
+{% extends "templates/base.html" %}
+
+{% block title %}{{ article.title|ucwords }} | {% endblock %}
+
+{% block meta %}
+<meta name="description" content="{{ article.short_desc }}"/>
+<meta property="og:title" content="{{ article.title|ucwords }}"/>
+<meta property="og:description" content="{{ article.short_desc }}"/>
+<meta property="og:type" content="article"/>
+<meta property="og:image" content="http{% if HTTPS %}s{% endif %}://{{ HTTP_HOST }}{{ MEDIA_URL }}{{ article.image }}"/>
+{% endblock %}
+
+{% block pageID %}news{% endblock %}
+
+{% block breadcrumb %}
+<li><span class="fa fa-angle-right"></span> <a href="{{ BASE_URL }}news/">News</a></li>
+<li><span class="fa fa-angle-right"></span> <a href="{{ BASE_URL }}news/{{ current_category.slug }}">{{ current_category.name }}</a></li>
+<li><span class="fa fa-angle-right"></span> <a href="{{ article.getUrl }}">{{ article.title|ucwords }}</a></li>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+	<article id="newsArticle" class="col-md-9 col-sm-9 col-xs-12">
+		<h1>{{ article.title|ucwords|uselessTestFilter:1,2,true }}</h1>
+		<section class="content clearfix">
+			<img class="articleMainImage" src="{{ MEDIA_URL }}{{ article.image }}"/>
+			{{ article.content }}
+		</section>
+		<div class="published">
+			Published on : <span>{{ article.datetime }}</span>
+		</div>
+		
+		<h2>Author</h2>
+		<section class="author clearfix">
+			<!-- This is an abuse of : article.getAuthor() who try a query on each call if querysaver is off -->
+			<!-- Either put it on or declare your variable once and do the less query possible -->
+			<img src="{{ MEDIA_URL }}{{ article.getAuthor.image }}"/>
+			<h3>{{ article.getAuthor.name|ucwords }}</h3>
+			<p>
+				Email : <a href="mailto:{{ article.getAuthor.email }}">{{ article.getAuthor.email }}</a>
+			</p>
+		</section>
+	</article>
+	
+	{% news_categories_menu current_category %}
+</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "cmless/error_base.html" %}
+
+{% block title %}404 Not Found{% endblock %}
+
+{% block header %}
+<i class="glyphicon glyphicon-question-sign"> </i>
+<h1>404 Page not found</h1>
+<h2>{{absolute_request_uri}}</h2>
+{% endblock %}
+
+{% block content %}
+<div class="col-md-12">The page you requested was not found, or you do not have permission to view this page.</div>
+{% endblock %}

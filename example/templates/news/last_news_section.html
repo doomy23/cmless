@@ -1,0 +1,12 @@
+<section id="lastNews" class="col-md-3 col-sm-3 col-xs-12">
+	<h2>Last news</h2>
+	
+	{% for newsarticle in last_articles %}
+	<article class="news clearfix">
+		<img src="{{ MEDIA_URL }}{{ newsarticle.image }}"/>
+		<h2>{{ newsarticle.title|ucwords }}</h2>
+		<p>{{ newsarticle.short_desc }}</p>
+		<a class="btn btn-primary btn-xs" href="{{ newsarticle.getUrl }}"><span class="fa fa-arrow-right"></span> See full article</a>
+	</article>
+	{% endfor %}
+</section>

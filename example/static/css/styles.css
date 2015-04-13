@@ -1,0 +1,440 @@
+/* Bootstrap overwrites */
+
+a:hover{
+	text-decoration:none;
+}
+
+ul.nav li.dropdown:hover ul.dropdown-menu {
+	display: block;
+}
+
+/* General design */
+
+body{
+	background:#DDDDDD;
+}
+
+body > header{
+	display:block;
+	position:relative;
+	z-index:2;
+	box-shadow: 0px 0px 30px 0px rgba(23, 81, 126, 0.75);
+	-moz-box-shadow: 0px 0px 30px 0px rgba(23, 81, 126, 0.75);
+	-webkit-box-shadow: 0px 0px 30px 0px rgba(23, 81, 126, 0.75);
+	/* Generated from http://www.colorzilla.com/gradient-editor/ */
+	background: rgb(59,103,158); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(59,103,158,1) 0%, rgba(43,136,217,1) 50%, rgba(32,124,202,1) 51%, rgba(125,185,232,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(59,103,158,1)), color-stop(50%,rgba(43,136,217,1)), color-stop(51%,rgba(32,124,202,1)), color-stop(100%,rgba(125,185,232,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(59,103,158,1) 0%,rgba(43,136,217,1) 50%,rgba(32,124,202,1) 51%,rgba(125,185,232,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(59,103,158,1) 0%,rgba(43,136,217,1) 50%,rgba(32,124,202,1) 51%,rgba(125,185,232,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(59,103,158,1) 0%,rgba(43,136,217,1) 50%,rgba(32,124,202,1) 51%,rgba(125,185,232,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(59,103,158,1) 0%,rgba(43,136,217,1) 50%,rgba(32,124,202,1) 51%,rgba(125,185,232,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b679e', endColorstr='#7db9e8',GradientType=0 ); /* IE6-9 */
+}
+
+body > header h1{
+	color:white;
+	font-size:3em;
+	font-weight:600;
+	margin:30px 0;
+}
+
+#navbar-header{
+	margin:25px 0;
+}
+
+#content{
+	display:block;
+	position:relative;
+	z-index:1;
+	background:white;
+	box-shadow: 2px 2px 10px 4px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 2px 2px 10px 4px rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow: 2px 2px 10px 4px rgba(0, 0, 0, 0.5);
+}
+
+#content > .row{
+	margin-bottom:15px;
+}
+
+#breadcrumb{
+	list-style-type:none;
+	margin-top:20px;
+	margin:10px 0 15px 0;
+	padding:0;
+}
+
+#breadcrumb li{
+	float:left;
+	display:block;
+	position:relative;
+	padding:0 10px 0 0;
+}
+
+#breadcrumb li span.fa{
+	padding-right:7px;
+}
+
+#breadcrumb li:last-child a{
+	color:#333333;
+}
+
+#content > .row > section > h1,
+#content > .row > section > h2,
+#content > .row > article > h1,
+#content > .row > article > h2{
+	font-size:2em;
+	color:black;
+	border-bottom:2px #DBB04B solid;
+	display:block;
+	width:99%;
+	margin:0 0 10px;
+	padding:0 0 6px;
+}
+
+#content > footer{
+	border-top:10px #DBB04B solid;
+	background:#B5B5B5;
+	min-height:100px;
+	margin: 10px -15px 0;
+}
+
+#footerNav ul{
+	padding:0;
+	margin:15px 0 20px;
+	list-style-type:none;
+}
+
+#footerNav ul li{
+	float:left;
+	width:20%;
+	padding:10px;
+}
+
+#footerNav ul li a{
+	color:#323232;
+	font-weight:600;
+	font-size:1.1em;
+}
+
+#footerNav ul li a:hover{
+	color:white;
+}
+
+#footerNav ul li .fa{
+	color:white;
+	font-size:1.2em;
+	font-weight:600;
+}
+
+#footerCoord{
+	text-align:right;
+	margin-bottom:20px;
+}
+
+#footerCoord h1{
+	margin:20px 0 10px;
+	padding:0 0 6px;
+	color:white;
+	font-size:2em;
+	font-weight:600;
+	border-bottom:2px #DBB04B solid;
+}
+
+#footerCoord p{
+	margin:0;
+	color:black;
+}
+
+#footerCoord p .fa{
+	font-size:1.2em;
+	font-weight:600;
+}
+
+#footerCoord p a{
+	color:black;
+	text-decoration:underline;
+}
+
+#footerCoord p a:hover{
+	color:white;
+	text-decoration:none;
+}
+
+
+/* Responsive */
+
+#smallDevicesSelectMenu{
+	width:100%;
+	margin:0;
+	padding:8px 15px;
+	border:none;
+	background:#f8f8f8;
+	text-align:left;
+}
+
+@media only screen and (max-width: 1999px) {
+	#footerNav ul li{
+		width:25%;
+	}
+}
+
+@media only screen and (max-width: 991px) {
+	body > header h1{
+		margin:25px 0 0;
+	}
+	#navbar-header{
+		margin:30px 0 20px;
+	}
+	#footerNav ul li{
+		width:33.33%;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	body > header h1{
+		margin:15px 0;
+	}
+	#navbar-header{
+		min-height:0px !important;
+		height:auto !important;
+		margin:15px 0;
+	}
+	#navbar-header .container-fluid{
+		padding:0;
+	}
+	#content > .row > section{
+		margin-bottom:20px;
+	}
+	#footerNav ul li{
+		width:100%;
+	}
+}
+
+/* Home page */
+
+#page-index #cats .cat{
+	float:left;
+	padding:15px;
+	width:33.33%;
+	text-align:center;
+	display:block;
+	position:relative;
+	height:250px;
+}
+
+#page-index #cats .cat img{
+	max-height:160px;
+	max-width:100%;
+	width:auto;
+}
+
+#page-index #cats .cat h2{
+	font-size:1.2em;
+}
+
+#page-index #cats .cat a.open{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	padding:40% 0;
+	background:#DBB04B;
+	color:white;
+	font-size:1.3em;
+	font-weight:600;
+	display:block;
+	-webkit-transition: opacity 0.5s ease-in-out;
+	-moz-transition: opacity 0.5s ease-in-out;
+	-ms-transition: opacity 0.5s ease-in-out;
+	-o-transition: opacity 0.5s ease-in-out;
+	transition: opacity 0.5s ease-in-out;
+	opacity:0;
+	filter: alpha(opacity=0);
+}
+
+#page-index #cats .cat a.open:hover{
+	opacity:0.9;
+	filter: alpha(opacity=90);
+}
+
+#lastNews .news{
+	margin:0 0 20px;
+}
+
+#lastNews .news:last-child{
+	margin-bottom:0px;
+}
+
+#lastNews .news h2{
+	font-size:1.3em;
+	padding:0;
+	margin:0 0 10px;
+}
+
+#lastNews .news img{
+	max-width:100px;
+	height:auto;
+	float:left;
+	padding:0 10px 10px 0;
+}
+
+#lastNews .news a{
+	float:right;
+}
+
+@media only screen and (max-width: 991px) {
+	#page-index #cats .cat{
+		height:190px;
+	}
+	#page-index #cats .cat img{
+		max-height:100px;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	#lastNews .news img{
+		max-width:275px;
+	}
+}
+
+@media only screen and (max-width: 499px) {
+	#page-index #cats .cat{
+		height:auto;
+		width:100%;
+	}
+	#page-index #cats .cat img{
+		width:100%;
+		max-height:none;
+		height:auto;
+	}
+	#lastNews .news img{
+		max-width:100%;
+		width:100%;
+	}
+}
+
+/* News pages */
+
+#page-news #newsArticles .newsArticle{
+	display:block;
+	position:relative;
+	margin:0 0 20px;
+}
+
+#page-news #newsArticles .newsArticle img{
+	float:left;
+	padding:0 15px 15px 0;
+	max-width:300px;
+	height:auto;
+}
+
+#page-news #newsArticles .newsArticle h2{
+	font-size:1.8em;
+	padding:0;
+	margin:0 0 10px;
+}
+
+#page-news #newsArticles > nav{
+	text-align:center;
+}
+
+#page-news #newsArticles > nav .pagination{
+	margin:0 0 15px;
+}
+
+#page-news #newsArticlesCategories nav ul{
+	margin:0;
+	padding:0;
+	list-style-type:none;
+	background:#2E80CC;
+	border-bottom:2px #396AA5 solid;
+}
+
+#page-news #newsArticlesCategories nav ul li{
+	border-bottom:2px #396AA5 solid;
+}
+
+#page-news #newsArticlesCategories nav ul li.active{
+	background:#549EDA;
+}
+
+#page-news #newsArticlesCategories nav ul li:hover{
+	background:#67ABE1;
+}
+
+#page-news #newsArticlesCategories nav ul li a{
+	padding:10px;
+	color:white;
+	font-size:1.2em;
+	display:block;
+	width:100%;
+}
+
+#page-news #newsArticle .content img.articleMainImage{
+	float:left;
+	padding:0 15px 15px 0;
+	max-width:320px;
+	height:auto;
+}
+
+#page-news #newsArticle .published{
+	text-align:right;
+}
+
+#page-news #newsArticle .published span{
+	font-weight:600;
+	color:black;
+}
+
+#page-news #newsArticle h2{
+	margin-top:15px;
+}
+
+#page-news #newsArticle .author img{
+	float:left;
+	max-width:200px;
+	height:auto;
+	padding-right:15px;
+}
+
+#page-news #newsArticle .author h3{
+	margin:15px 0;
+}
+
+@media only screen and (max-width: 767px) {
+	#page-news #newsArticles .newsArticle img{
+		max-width:200px;
+	}
+	#page-news #newsArticle .content img.articleMainImage{
+		max-width:240px;
+	}
+}
+
+@media only screen and (max-width: 499px) {
+	#page-news #newsArticle .content img.articleMainImage{
+		max-width:100%;
+	}
+	#page-news #newsArticles .newsArticle img{
+		max-width:none;
+		width:100%;
+		padding-right:0;
+	}
+}
+
+/* Benchtest */
+
+.syntaxhighlighter{
+	max-width:100%;
+	max-height:400px;
+	overflow:scroll;
+}
+
+.syntaxhighlighter .line{
+	height:17px;
+}
+
+.syntaxhighlighter .gutter{
+	vertical-align:top;
+}
