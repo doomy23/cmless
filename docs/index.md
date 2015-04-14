@@ -29,4 +29,6 @@ It gives the opportunity to create a complete web application without losing muc
     - CachedTemplate
     - CachedController
     - QueriesSaver
-- Contributing
+- [Contributing](./CONTRIBUTING.md)
+    - [Git Setup](./CONTRIBUTING.md#git-setup)
+    - [Guidelines](./CONTRIBUTING.md#guidelines)

@@ -91,5 +91,7 @@ To make it work, import the database, follow the above instructions and modify
 the configuration in [config.php][10], make sure the **'cmless_path'** and **'db'**
 is set properly.
 
+> Making a "setup on launch" for the basic DB structure and values would be great!
+
 [9]: https://github.com/BorealHub/cmless/tree/master/example/
 [10]: https://github.com/BorealHub/cmless/tree/master/example/config.php
