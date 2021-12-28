@@ -28,7 +28,6 @@ $CONFIG = array(
 		),
 	),
 	'modules'=>array(
-		'Admin'=>'cmless.admin',
 		'News'=>'modules.news',
 		'Users'=>'modules.users',
 	),
