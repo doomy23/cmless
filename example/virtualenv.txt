@@ -7,9 +7,9 @@
 <VirtualHost *:80>
     ServerName example.cmless
     ServerAlias www.example.cmless
-    DocumentRoot "/mnt/sites/exemple"
+    DocumentRoot "/mnt/sites/example"
     DirectoryIndex index.php
-    <Directory "/mnt/sites/exemple">  
+    <Directory "/mnt/sites/example">  
       AllowOverride All  
       Allow from All  
     </Directory>

@@ -182,7 +182,11 @@ class Template{
 		   			$value = get_class($value);
 		   		
 			endif;
-		   	
+
+			if(!is_string($value) && in_array($filter, array('htmlentities', 'htmlspecialchars', 'nl2br', 
+				'strtolower', 'strtoupper', 'ucfirst', 'ucwords', 'trim', 'strlen')))
+				$value = "";
+			
 			return eval("return ".$filter."(\$value);");
 			
 		elseif($filter=="length"):

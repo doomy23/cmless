@@ -188,14 +188,16 @@ final class Backend{
 	{
 		if($model->is_new()):
 			$sth = $this->insert($model->table(), $model->getValues());
-			$pk = $model->getPk();
-			
+			$pk = $model->getPk(); // key, value
 			// Set pk if auto
 			if(count($pk)!=0):
+				$pk_key = $pk[0];
+				$pk_value = $pk[1];
 				$structure = $model->structure();
 			
-				if(is_null($pk[1]) && in_array("auto", $structure[$pk[0]])):
-					$model->$pk[0] = $this->PDO->lastInsertId();
+				if(is_null($pk_value) && in_array("auto", $structure[$pk_key])):
+					var_dump($pk_key, $this->PDO->lastInsertId());
+					$model->$pk_key = $this->PDO->lastInsertId();
 				
 				endif;
 			endif;

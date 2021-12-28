@@ -44,10 +44,7 @@ $DEFAULT_CONFIG = array(
 		'cache_enabled'=>true
 	),
 	'hashing'=>array(
-		'algo'=>'sha256',
-		'iterations'=>1000,
-		'salt_byte_size'=>24,
-		'hash_byte_size'=>24
+		'algo'=>PASSWORD_BCRYPT,
 	),
 	'session'=>array(
 		'name'=>"site_session",

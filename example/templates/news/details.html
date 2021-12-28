@@ -27,7 +27,7 @@
 			{{ article.content }}
 		</section>
 		<div class="published">
-			Published on : <span>{{ article.datetime }}</span>
+			Published on : <span>{{ article.datetime|datetimeFormat:"Y-m-d H:i" }}</span>
 		</div>
 		
 		<h2>Author</h2>

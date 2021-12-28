@@ -15,17 +15,23 @@ It gives the opportunity to create a complete web application without losing muc
 - Customizable 403, 404 and 500 pages
 - Template caching system
 - Optional queries saver
+- CSRF protection
+- Basic and extendable User model with login
 
 ## Features to come
-- Admin module for the CMS
 - Internationalisation and localization
-- Optional pages module
 - Support for SQLite and PostgreSQL
-- Documentation
+- More documentation
 
 ## Documentation
 
-Will be available at http://cmless.readthedocs.org
+Index available [here](docs/index.md).
+
+## Security tips
+
+- Always perform input and output validation. The Template system is very flexible but also susceptible to XXS. Always `htmlspecialchars` in templates and controllers.
+- Use CSRF tokens in forms to prevent cross-site scripting.
+- Secure your website with HTTPS
 
 ## Copyrights and license
 

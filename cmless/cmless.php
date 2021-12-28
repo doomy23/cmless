@@ -82,6 +82,11 @@ final class Cmless{
 	 */
 	private function load_modules()
 	{
+		// Loading default templatetags and filters
+		$this->_templateFilters[] = DatetimeFormatFilter::class;
+		$this->_templateFilters[] = ResizeImageFilter::class;
+
+		// Loading custom templatetags, filters, models, etc.
 		foreach(self::$config['modules'] as $class => $path):
 			$path = Utilities::parse_path($path, $this->_app_paths, false);
 			$imported = $this->import($path."module.php", $class, true);
@@ -328,6 +333,13 @@ final class Cmless{
 		
 		exit();
 	}
+
+	public static function Redirect($functionPath, $params=array(), $status=302)
+	{
+		$redirection = self::Urls()->reverse($functionPath, $params);
+		header("Location: ".$redirection, true, $status);
+		return true;
+	}
 	
 	/**
 	 * Public static classes constructor
@@ -343,8 +355,10 @@ final class Cmless{
 				'BASE_URL'=>self::$config['app']['base_uri'],
 				'MEDIA_URL'=>self::$config['media_url'],
 				'STATIC_URL'=>self::$config['static_url'],
+				'CURRENT_URL'=>self::Urls()->getCurrentPath(),
 				'HTTP_HOST'=>$_SERVER['HTTP_HOST'],
 				'HTTPS'=>Utilities::is_secure(),
+				'AUTH'=>self::Auth(),
 			),
 		));
 	}
@@ -368,8 +382,10 @@ final class Cmless{
 				'BASE_URL'=>self::$config['app']['base_uri'],
 				'MEDIA_URL'=>self::$config['media_url'],
 				'STATIC_URL'=>self::$config['static_url'],
+				'CURRENT_URL'=>self::Urls()->getCurrentPath(),
 				'HTTP_HOST'=>$_SERVER['HTTP_HOST'],
 				'HTTPS'=>Utilities::is_secure(),
+				'AUTH'=>self::Auth(),
 			)), $db_key, $lifetime);
 	}
 	
@@ -399,6 +415,15 @@ final class Cmless{
 	public static function Urls()
 	{
 		return new Urls(self::$config['app']['urls']);
+	}
+
+	/**
+	 * Public static classes constructor
+	 * @return Auth
+	 */
+	public static function Auth()
+	{
+		return new Auth();
 	}
 }
 

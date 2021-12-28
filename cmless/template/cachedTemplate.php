@@ -8,6 +8,7 @@ class CachedTemplateModel extends Model{
 	public $vars;
 	public $params;
 	public $url;
+	public $user;
 	
 	public static function objects($backendKey="default", $modelClassName=__CLASS__)
 	{
@@ -29,7 +30,8 @@ class CachedTemplateModel extends Model{
 			'html'=>array('type'=>'text', 'required'),
 			'vars'=>array('type'=>'char', 'length'=>32),
 			'params'=>array('type'=>'char', 'length'=>32),
-			'url'=>array('type'=>'text')
+			'url'=>array('type'=>'text'),
+			'user'=>array('type'=>'int'),
 		);
 	}
 	
@@ -43,6 +45,7 @@ class CachedTemplateModel extends Model{
 		if($this->template_id !== null) $identity['template_id'] = $this->template_id;
 		if($this->vars !== null && $this->params === null) $identity['vars'] = $this->vars;
 		elseif($this->params !== null) $identity['params'] = $this->params;
+		$identity['user'] = $this->user;
 		return $identity;
 	}
 	
@@ -107,6 +110,9 @@ class CachedTemplate{
 			if($file !== null) $conditions['file']=$file;
 			if($id !== null) $conditions['template_id']=$id;
 			if($url !== null) $conditions['url']=$url;
+			// We need to specify NULL or ID user for the user-specific parts of the template
+			if(Cmless::Auth()->get_current_user() !== null) $conditions['user']=Cmless::Auth()->get_current_user()->id;
+			else $conditions['user']=null;
 			
 			if(count($params)>0) $conditions['params']=md5(print_r($params, true));
 			elseif(count($vars)>0) $conditions['vars']=md5(print_r($vars, true));
@@ -149,6 +155,7 @@ class CachedTemplate{
 			'vars'=>(count($vars)>0)? md5(print_r($vars, true)) : null,
 			'params'=>(count($params)>0)? md5(print_r($params, true)) : null,
 			'url'=>$url,
+			'user'=>(Cmless::Auth()->get_current_user() !== null)? Cmless::Auth()->get_current_user()->id : null,
 		));
 	}
 	

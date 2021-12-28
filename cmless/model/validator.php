@@ -1,16 +1,27 @@
 <?php
 
-class ModelValidationException extends Exception { }
+class ModelValidationException extends Exception { 
+
+	public $field;
+
+    public function __construct($message, $code = 0, Throwable $previous = null, $field = null) {
+        
+		$this->field = $field;
+        parent::__construct($message, $code, $previous);
+    }
+
+}
 
 class Validator{
 	// Class constants
-	public static $TYPES = array("pk", "fk", "int", "float", "decimal", 
+	public static $TYPES = array("pk", "fk", "int", "bool", "float", "decimal", 
 			"char", "text", "image", "date", "datetime");
 	
 	public static $ALLOWED_PARAMS = array(
 			"pk"=>array("auto"),
 			"fk"=>array("required", "model"),
 			"int"=>array("required", "default"),
+			"bool"=>array("required", "default"),
 			"float"=>array("required", "default"),
 			"decimal"=>array("required", "default"),
 			"char"=>array("required", "length", "default"),
@@ -106,11 +117,11 @@ class Validator{
 						break;
 						
 					case "today":
-						$this->check_param_default($property, $params, true);
+						$this->check_param_default($property, $params);
 						break;
 						
 					case "now":
-						$this->check_param_default($property, $params, true);
+						$this->check_param_default($property, $params);
 						break;
 				}
 			
@@ -185,17 +196,8 @@ class Validator{
 	 * @param array $params
 	 * @throws ModelValidationException
 	 */
-	private function check_param_default($property, &$params, $datetime=false)
-	{
-		if(!$datetime):
-			if(in_array("today", $params))
-				throw new ModelValidationException(sprintf("'%s' (%s) field in %s cannot have a 'default' parameter if 'today' is the default value", $property, $params["type"], $this->model));
-			
-			if(in_array("now", $params))
-				throw new ModelValidationException(sprintf("'%s' (%s) field in %s cannot have a 'default' parameter if 'now' is the default value", $property, $params["type"], $this->model));
-		
-		endif;
-		
+	private function check_param_default($property, &$params)
+	{	
 		if(is_null($this->model->$property) && $this->model->is_new())
 			$this->model->setDefault($property);
 	}
@@ -224,7 +226,7 @@ class Validator{
 			throw new ModelValidationException(sprintf("'%s' (%s) field in %s : 'upload_to' cannot be empty", $property, $params["type"], $this->model));
 		
 		if(!is_dir(Cmless::$config['media_dir']."/".$params['upload_to']))
-			throw new ModelValidationException(sprintf("'%s' (%s) field in %s : '%s' directory does not exist", $property, $params["type"], $this->model, Cmless::$config['uploads_dir']."/".$params['upload_to']));
+			throw new ModelValidationException(sprintf("'%s' (%s) field in %s : '%s' directory does not exist", $property, $params["type"], $this->model, Cmless::$config['media_dir']."/".$params['upload_to']));
 	}
 	
 }

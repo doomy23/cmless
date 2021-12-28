@@ -61,10 +61,17 @@
 									</ul>
 									<ul class="nav navbar-nav pull-right">
 										<li>
-											<a href="{{ BASE_URL }}">
-												<span class="glyphicon glyphicon-globe"></span>
-												Contact Us
+											{% if AUTH.get_current_user %}
+											<a href="{{ BASE_URL }}users/logout/">
+												<span class="glyphicon glyphicon-off"></span>
+												Logout
 											</a>
+											{% else %}
+											<a href="{{ BASE_URL }}users/login/">
+												<span class="glyphicon glyphicon-user"></span>
+												Login
+											</a>
+											{% endif %}
 										</li>
 									</ul>
 								</div>

@@ -91,5 +91,9 @@ To make it work, import the database, follow the above instructions and modify
 the configuration in [config.php][10], make sure the **'cmless_path'** and **'db'**
 is set properly.
 
+The admin login is:
+- Email: admin@admin.com
+- Password: admin123
+
 [9]: https://github.com/BorealHub/cmless/tree/master/example/
 [10]: https://github.com/BorealHub/cmless/tree/master/example/config.php

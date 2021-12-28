@@ -264,7 +264,7 @@ class Urls{
 				endif;
 				
 				$url_lastchar = substr($url['url'], strlen($url['url'])-2, 1);
-				$uri_lastchar = substr($URI, count($URI)-2, 1);
+				$uri_lastchar = substr($URI, strlen($URI)-2, 1);
 				
 				if(count($url['params'])==0):
 					if($url['url']==$URI || ($url_lastchar=='/' && $url['url']==$URI.'/')):

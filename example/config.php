@@ -1,7 +1,7 @@
 <?php
 
 $CONFIG = array(
-	'debug'=>true,
+	'debug'=>env('DEBUG', true),
 	'cmless_path'=>'../cmless/',
 	'errors_ignored'=>array(E_DEPRECATED), // You should not do this but it's possible...
 	'error_controller'=>'defaultController.DefaultController.error', // On 'debug' false only for error: 500
@@ -15,12 +15,12 @@ $CONFIG = array(
 	),
 	'db'=>array(
 		'default'=>array(
-			'engine'=>'mysql',
-			'host'=>'localhost',
-			'user'=>'root',
-			'pass'=>'',
-			'dbname'=>'example.cmless',
-			'charset'=>'utf8',
+			'engine'=>env('DB_DEFAULT_ENGINE', 'mysql'),
+			'host'=>env('DB_DEFAULT_HOST', 'localhost'),
+			'user'=>env('DB_DEFAULT_USER', 'root'),
+			'pass'=>env('DB_DEFAULT_PASS', ''),
+			'dbname'=>env('DB_DEFAULT_DBNAME', 'example.cmless'),
+			'charset'=>env('DB_DEFAULT_CHARSET', 'utf8'),
 		),
 		'sqlite'=>array(
 			'engine'=>'sqlite',
@@ -30,6 +30,7 @@ $CONFIG = array(
 	'modules'=>array(
 		'Admin'=>'cmless.admin',
 		'News'=>'modules.news',
+		'Users'=>'modules.users',
 	),
 	'app'=>array(
 		'urls'=>'urls',

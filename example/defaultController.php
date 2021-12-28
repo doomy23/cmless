@@ -9,7 +9,7 @@ class DefaultController extends Controller{
 					array('img'=>'http://images.wisegeek.com/young-calico-cat.jpg', 'title'=>'Young Calico'),
 					array('img'=>'http://media.moddb.com/images/downloads/1/66/65343/-_-cats-cats-22066039-1280-1024.jpg', 'title'=>'My cup of tea'),
 					array('img'=>'http://www.foodiggity.com/wp-content/uploads/2013/05/sushi-cats-2.jpeg', 'title'=>'Delicious-looking sushi-cat'),
-					array('img'=>'http://images.boomsbeat.com/data/images/full/24381/cat_1-jpg.jpg', 'title'=>'OH NOOOOOOOO!'),
+					array('img'=>'https://i.dailymail.co.uk/i/pix/2012/02/01/article-2094738-118A758B000005DC-950_634x436.jpg', 'title'=>'OH NOOOOOOOO!'),
 					array('img'=>'http://rilm.files.wordpress.com/2012/10/cat-music.jpg', 'title'=>'Cat listening music'),
 				)
 			), array(), $this->getCurrentUrl());

@@ -1,5 +1,5 @@
 <?php
- 
+
 if(!isset($CONFIG))
 	die("\$CONFIG is not set.");
 
@@ -33,6 +33,8 @@ require_once CMLESS_PATH.'controller/init.php';
 require_once CMLESS_PATH.'module.php';
 require_once CMLESS_PATH.'urls.php';
 require_once CMLESS_PATH.'cmless.php';
+require_once CMLESS_PATH.'user/init.php';
+require_once CMLESS_PATH.'csrf.php';
 require_once CMLESS_PATH.'error.php';
 
 Cmless::getInstance()->setConfig($CONFIG);

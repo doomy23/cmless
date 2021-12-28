@@ -4,6 +4,7 @@ $urls = array(
 	array('/', 'defaultController', 'DefaultController.index'),
 	array('/benchtest/', 'benchtestController', 'BenchtestController.test'),
 	array('/news*', 'News.urls'),
+	array('/users*', 'Users.urls'),
 );
 
 ?>
