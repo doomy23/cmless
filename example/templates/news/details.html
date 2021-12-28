@@ -23,7 +23,7 @@
 	<article id="newsArticle" class="col-md-9 col-sm-9 col-xs-12">
 		<h1>{{ article.title|ucwords|uselessTestFilter:1,2,true }}</h1>
 		<section class="content clearfix">
-			<img class="articleMainImage" src="{{ MEDIA_URL }}{{ article.image }}"/>
+			<img class="articleMainImage" src="{{ MEDIA_URL }}{{ article.image|resizeImage:320,240 }}"/>
 			{{ article.content }}
 		</section>
 		<div class="published">
@@ -34,7 +34,7 @@
 		<section class="author clearfix">
 			<!-- This is an abuse of : article.getAuthor() who try a query on each call if querysaver is off -->
 			<!-- Either put it on or declare your variable once and do the less query possible -->
-			<img src="{{ MEDIA_URL }}{{ article.getAuthor.image }}"/>
+			<img src="{{ MEDIA_URL }}{{ article.getAuthor.image|resizeImage:320,240 }}"/>
 			<h3>{{ article.getAuthor.name|ucwords }}</h3>
 			<p>
 				Email : <a href="mailto:{{ article.getAuthor.email }}">{{ article.getAuthor.email }}</a>

@@ -62,6 +62,12 @@
 									<ul class="nav navbar-nav pull-right">
 										<li>
 											{% if AUTH.get_current_user %}
+											<a href="{{ BASE_URL }}users/account/">
+												<span class="glyphicon glyphicon-user"></span>
+												My account
+											</a>
+										</li>
+										<li>
 											<a href="{{ BASE_URL }}users/logout/">
 												<span class="glyphicon glyphicon-off"></span>
 												Logout

@@ -16,7 +16,7 @@
 		
 		{% for newsarticle in articles %}
 		<article class="newsArticle clearfix">
-			<img src="{{ MEDIA_URL }}{{ newsarticle.image }}"/>
+			<img src="{{ MEDIA_URL }}{{ newsarticle.image|resizeImage:320,240 }}"/>
 			<h2>{{ newsarticle.title|ucwords }}</h2>
 			<p>{{ newsarticle.short_desc }}</p>
 			<a class="btn btn-primary" href="{{ newsarticle.getUrl }}"><span class="fa fa-arrow-right"></span> See full article</a>

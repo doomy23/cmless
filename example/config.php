@@ -35,7 +35,7 @@ $CONFIG = array(
 	'app'=>array(
 		'urls'=>'urls',
 		'base_uri'=>'/', // change this if running on a subdir
-		'cache_enabled'=>true
+		'cache_enabled'=>env('CACHE_ENABLED', true)
 	),
 	'media_dir'=>'media',
 	'static_dir'=>'static',

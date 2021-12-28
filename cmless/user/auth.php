@@ -32,6 +32,10 @@ class Auth {
         $_SESSION['cmless_user_id'] = $user->id;
         $_SESSION['cmless_user_email'] = $user->email;
         $this->current_user = $user;
+        // Update last_login
+        $datetime = new DateTime('NOW', new DateTimeZone(Cmless::$config['datetime']['save_as']));
+		$user->last_login = $datetime->format('Y-m-d H:i:s');
+        $user->save();
     }
 
     /**
