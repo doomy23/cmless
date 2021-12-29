@@ -46,6 +46,7 @@ final class Cmless{
 	public function start()
 	{
 		self::sec_session_start();
+		self::sec_headers();
 		
 		$this->_app_paths['cmless'] = self::$config['cmless_path'];
 		$this->load_modules();
@@ -75,6 +76,20 @@ final class Cmless{
 			endif;
 			$_SESSION['started'] = time();
 		endif;
+	}
+
+	/**
+	 * Set the security headers
+	 */
+	public static function sec_headers()
+	{
+		header("X-XSS-Protection: 1; mode=block");
+		header("Access-Control-Allow-Origin: ".Utilities::domain_uri());
+		header("X-Frame-Options: deny");
+		header("X-Content-Type-Options: nosniff");
+		header("Strict-Transport-Security: max-age=3600; includeSubDomains");
+		header("Cache-Control no-cache");
+		header("Expires: 0");
 	}
 	
 	/**
