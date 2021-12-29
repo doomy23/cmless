@@ -175,8 +175,12 @@ class Urls{
 				elseif(array_key_exists('include', $url)):
 					if(strpos($url['include'], $functionPath) == 0):
 						$this->load_urls($url['include'], $url);
-				
-						return $this->reverse($functionPath, $params, $url);
+						try {
+							return $this->reverse($functionPath, $params, $url);
+						}
+						catch(UrlsException $e){ 
+							// No Url found in Include path
+						 }
 					endif;
 				endif;
 			endif;

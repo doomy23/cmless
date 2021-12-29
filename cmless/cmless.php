@@ -59,25 +59,21 @@ final class Cmless{
 	 */
 	public static function sec_session_start()
 	{
+		session_name(self::$config['session']["name"]);
+		session_start();
 		if (!isset($_SESSION['started'])):
-			session_name(self::$config['session']["name"]);
-
+			session_destroy();
 			if (ini_set('session.use_only_cookies', 1) !== FALSE):
 				$cookieParams = session_get_cookie_params();
-			
 				session_set_cookie_params((self::$config['session']["lifetime"] != 0)? 
 					self::$config['session']["lifetime"] : $cookieParams["lifetime"] ,
 					$cookieParams["path"], $cookieParams["domain"], Utilities::is_secure(), self::$config['session']["httponly"]);
-				
 				session_start();
 				session_regenerate_id(true);
 			else:
 				session_start();
-				
 			endif;
 			$_SESSION['started'] = time();
-		else:
-			session_start();
 		endif;
 	}
 	

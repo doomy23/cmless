@@ -30,7 +30,10 @@ class DatetimeFormatFilter extends TemplateFilter{
 		if(is_object($value) && get_class($value) == "DateTime"):
 			$value = $value->format($params[0]);
 		else:
-			$value = (new DateTime($value))->format($params[0]);
+			$saved_timezone = Cmless::$config['datetime']['save_as'];
+			$local_timezone = Cmless::$config['datetime']['default_timezone'];
+			$value = (new DateTime($value, new DateTimeZone($saved_timezone)))
+				->setTimezone(new DateTimeZone($local_timezone))->format($params[0]);
 		endif;
 
 		return $value;
