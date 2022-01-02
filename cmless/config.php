@@ -41,7 +41,8 @@ $DEFAULT_CONFIG = array(
 		'default_db_key'=>'default',
 		'default_cache_db_key'=>'default',
 		'default_cache_lifetime'=>120,
-		'cache_enabled'=>true
+		'cache_enabled'=>true,
+		'login_redirect'=>null,
 	),
 	'hashing'=>array(
 		'algo'=>PASSWORD_BCRYPT,

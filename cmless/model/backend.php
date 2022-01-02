@@ -196,7 +196,6 @@ final class Backend{
 				$structure = $model->structure();
 			
 				if(is_null($pk_value) && in_array("auto", $structure[$pk_key])):
-					var_dump($pk_key, $this->PDO->lastInsertId());
 					$model->$pk_key = $this->PDO->lastInsertId();
 				
 				endif;

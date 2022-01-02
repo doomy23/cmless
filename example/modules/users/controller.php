@@ -11,7 +11,7 @@ class UsersController extends Controller{
 		$user = Cmless::Auth()->get_current_user();
 		if($user): 
 			// Redirect
-			return Cmless::Redirect('defaultController.DefaultController.index');
+			return Cmless::getInstance()->Redirect('defaultController.DefaultController.index');
 		endif;
 		$form = array();
 		// Check if POST
@@ -24,7 +24,7 @@ class UsersController extends Controller{
 				// PS: To save a password: $user->password = password_hash(trim($_POST['password']), Cmless::$config['hashing']['algo']);
 				if(password_verify(trim($_POST['password']), $user->password)):
 					Cmless::Auth()->login($user);
-					return Cmless::Redirect('defaultController.DefaultController.index');
+					return Cmless::getInstance()->Redirect('defaultController.DefaultController.index');
 				endif;
 			}
 			catch(ModelNotFoundQueryException $e) {}
@@ -45,7 +45,7 @@ class UsersController extends Controller{
 	public function logout()
 	{
 		Cmless::Auth()->logout();
-		return Cmless::Redirect('defaultController.DefaultController.index');
+		return Cmless::getInstance()->Redirect('defaultController.DefaultController.index');
 	}
 
 	public function account()

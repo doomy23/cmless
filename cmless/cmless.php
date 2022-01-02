@@ -87,7 +87,8 @@ final class Cmless{
 		header("Access-Control-Allow-Origin: ".Utilities::domain_uri());
 		header("X-Frame-Options: deny");
 		header("X-Content-Type-Options: nosniff");
-		header("Strict-Transport-Security: max-age=3600; includeSubDomains");
+		if(Utilities::is_secure())
+			header("Strict-Transport-Security: max-age=3600; includeSubDomains");
 		header("Cache-Control no-cache");
 		header("Expires: 0");
 	}
@@ -349,7 +350,11 @@ final class Cmless{
 		exit();
 	}
 
-	public static function Redirect($functionPath, $params=array(), $status=302)
+	/**
+	 * Make redirection header to the reversed URL
+	 * Does not work for external redirections.
+	 */
+	public function Redirect($functionPath, $params=array(), $status=302)
 	{
 		$redirection = self::Urls()->reverse($functionPath, $params);
 		header("Location: ".$redirection, true, $status);

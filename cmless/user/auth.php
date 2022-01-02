@@ -53,7 +53,10 @@ class Auth {
     public function verify($admin=false) {
         $user = $this->get_current_user();
         if($user === null):
-            Cmless::getInstance()->Http403();
+            if(Cmless::$config['app']['login_redirect'])
+                Cmless::getInstance()->Redirect(Cmless::$config['app']['login_redirect']);
+            else
+                Cmless::getInstance()->Http403();
         elseif($admin && !$user->admin):
             Cmless::getInstance()->Http403();
         elseif($user->banned):
